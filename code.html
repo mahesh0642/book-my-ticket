@@ -70,7 +70,10 @@
     <script>
       async function run() {
         const tbl = document.getElementById("tbl");
-        const res = await fetch("/seats");
+const token = localStorage.getItem('token') || '';
+  const res = await fetch("/auth/seats", {
+    headers: token ? { Authorization: `Bearer ${token}` } : {}
+  });
         const resarray = await res.json();
         const j = resarray.sort((a, b) => a.id - b.id);
         let tr;
@@ -109,7 +112,10 @@
               const name = prompt("Enter your name");
               if (!name) return;
 
-              const res = await fetch(`/${id}/${name}`, { method: "PUT" });
+const res = await fetch(`/auth/${id}/${name}`, {
+    method: "PUT",
+    headers: token ? { Authorization: `Bearer ${token}` } : {}
+  });
               const data = await res.json();
 
               if (data.error) {
