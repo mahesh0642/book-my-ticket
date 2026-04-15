@@ -11,6 +11,7 @@ import pg from "pg";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import cors from "cors";
+import authRoutes from './src/modules/auth/auth.routes.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -33,16 +34,17 @@ const pool = new pg.Pool({
 
 const app = new express();
 app.use(cors());
+app.use(express.json()); // Parse JSON bodies
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
-//get all seats
-app.get("/seats", async (req, res) => {
-  const result = await pool.query("select * from seats"); // equivalent to Seats.find() in mongoose
-  res.send(result.rows);
-});
 
+app.use('/auth', authRoutes);
+//get all seats
+app.get("/code.html", (req, res) => {
+  res.sendFile(__dirname + "/code.html");
+});
 //book a seat give the seatId and your name
 
 app.put("/:id/:name", async (req, res) => {

@@ -22,4 +22,4 @@ static noContent(res){
     })
 }
 }
-    export default ApiResponse;
+export default ApiResponse;

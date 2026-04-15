@@ -1,16 +1,12 @@
-# Frontend Auth Implementation Plan
+# Authentication Fix - Minimal Steps
+- [x] 1. Start Postgres DB
+- [x] 2. Fixed services.js → function exports (your original style)
+- [x] 3. Controller params order fixed
+- [ ] 4. Test npm run dev
 
-## Steps to Complete:
-
-### 1. [x] Created enhanced index.html with:
-   - Login/Register forms (modal/tab style)
-   - JWT storage in localStorage
-   - Protected seat booking (check token)
-   - Logout functionality
-   - Matching Tailwind theme
-
-### 2. [x] Test integration:
-   - Run `npm run dev`
-   - Verify register/login → booking protected
-
-### 3. [x] Frontend auth completed!
+- [ ] 2. Edit register DTO (add optional name)
+- [ ] 3. Edit auth services (default name if missing)
+- [ ] 4. Edit auth controller (handle name safely)
+- [ ] 5. Update index.html (add name input + JS)
+- [ ] 6. Test register/login → token received
+- [ ] 7. Add token-gated seats/booking redirect

@@ -4,226 +4,118 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CineHall | Premium Auth</title>
-
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
   <style>
     * { font-family: 'Inter', sans-serif; }
-
-    body {
-      background: linear-gradient(145deg, #0a0e1a, #1a1f2e, #16213e);
-    }
-
-    .premium-glass {
-      background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(25px);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .premium-glow {
-      box-shadow: 0 0 40px rgba(99,102,241,0.4);
-    }
-
-    .gradient-text {
-      background: linear-gradient(135deg,#6366f1,#8b5cf6,#ec4899);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .form-input {
-      background: rgba(255,255,255,0.08);
-      border: none;
-      outline: none;
-      color: white;
-    }
-
-    .form-input::placeholder {
-      color: #aaa;
-    }
-
-    .form-input:focus {
-      box-shadow: 0 0 0 2px rgba(99,102,241,0.5);
-    }
-
-    .card-hover {
-      transition: 0.3s;
-    }
-
-    .card-hover:hover {
-      transform: translateY(-6px);
-    }
-
-    .notif {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      padding: 16px 20px;
-      border-radius: 12px;
-      color: white;
-      font-weight: 600;
-      z-index: 999;
-      animation: slide 0.4s ease;
-    }
-
-    .success { background: #10b981; }
-    .error { background: #ef4444; }
-
-    @keyframes slide {
-      from { transform: translateX(100%); }
-      to { transform: translateX(0); }
-    }
+    body { background: linear-gradient(145deg, #0a0e1a, #1a1f2e, #16213e); }
+    .gradient-text { background: linear-gradient(135deg,#6366f1,#8b5cf6,#ec4899); -webkit-background-clip: text; color: transparent; }
+    .premium-glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(25px); border: 1px solid rgba(255,255,255,0.1); }
+    .form-input { background: rgba(255,255,255,0.08); border: none; outline: none; color: white; width: 100%; padding: 12px 16px; border-radius: 12px; font-size: 16px; }
+    .form-input::placeholder { color: #aaa; }
+    .form-input:focus { box-shadow: 0 0 0 3px rgba(99,102,241,0.5); }
+    .btn-primary { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; font-weight: 600; padding: 14px; border-radius: 12px; border: none; width: 100%; font-size: 16px; cursor: pointer; transition: all 0.3s; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(99,102,241,0.4); }
+    .status { padding: 12px; border-radius: 12px; margin-top: 16px; font-weight: 500; text-align: center; }
+    .success { background: rgba(34,197,94,0.2); color: #10b981; border: 1px solid rgba(34,197,94,0.5); }
+    .error { background: rgba(239,68,68,0.2); color: #ef4444; border: 1px solid rgba(239,68,68,0.5); }
   </style>
 </head>
-
-<body class="min-h-screen flex items-center justify-center p-6">
-
-<div class="w-full max-w-6xl flex flex-col lg:flex-row gap-12 items-center">
-
-  <!-- LEFT SIDE -->
-  <div class="lg:w-1/2 text-center lg:text-left flex-end">
-    <h1 class="text-6xl font-black gradient-text mb-6">CineHall</h1>
-    <h2 class="text-3xl font-bold text-white mb-4">BookMyShow Premium</h2>
-    <p class="text-slate-300 text-lg mb-10">
-      Experience seamless movie booking with premium seat selection and secure authentication.
-    </p>
-
-    <div class="space-y-4 hidden lg:block">
-      <div class="premium-glass p-4 rounded-xl flex gap-4 items-center">
-        <div class="text-green-400 text-xl">✔</div>
-        <div>
-          <div class="text-white font-semibold">Premium Seats</div>
-          <div class="text-sm text-slate-400">Best viewing experience</div>
-        </div>
+<body class="min-h-screen flex items-center justify-center p-8">
+  <div class="w-full max-w-4xl flex flex-col lg:flex-row gap-12 items-center">
+    <!-- Branding -->
+    <div class="lg:w-1/2 text-center lg:text-left">
+      <h1 class="text-6xl font-black gradient-text mb-6">CineKing</h1>
+      <h2 class="text-3xl font-bold text-white mb-4">BookMyShow Premium</h2>
+      <p class="text-slate-300 text-lg">   Experience seamless movie booking with premium seat selection and secure authentication..</p>
+    </div>
+    <!-- Forms -->
+    <div class="w-full lg:w-1/2 max-w-md bg-slate-900/30 backdrop-blur-xl rounded-3xl p-10 border border-slate-700 shadow-2xl">
+      <!-- Login -->
+      <form id="loginForm" class="space-y-6">
+        <h2 class="text-2xl font-bold gradient-text text-center">Sign In</h2>
+        <input type="email" id="loginEmail" required class="form-input" placeholder="test@example.com">
+        <input type="password" id="loginPassword" required class="form-input" placeholder="password123">
+        <button type="submit" class="btn-primary">Login</button>
+      </form>
+      <!-- Register -->
+      <form id="registerForm" class="space-y-6 hidden">
+        <h2 class="text-2xl font-bold gradient-text text-center">Sign Up</h2>
+        <input type="email" id="registerEmail" required class="form-input" placeholder="test@example.com">
+        <input type="password" id="registerPassword" required class="form-input" minlength="6" placeholder="password123">
+        <button type="submit" class="btn-primary bg-gradient-to-r from-emerald-500 to-teal-500">Sign Up</button>
+      </form>
+      <div class="text-center">
+        <span id="toggleBtn" class="text-slate-400 text-sm cursor-pointer hover:text-blue-400">Don't have account? Sign up</span>
       </div>
-
-      <div class="premium-glass p-4 rounded-xl flex gap-4 items-center">
-        <div class="text-indigo-400 text-xl">🔒</div>
-        <div>
-          <div class="text-white font-semibold">Secure Login</div>
-          <div class="text-sm text-slate-400">JWT protected</div>
-        </div>
-      </div>
+      <div id="status" class="status hidden"></div>
     </div>
   </div>
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    const toggleBtn = document.getElementById('toggleBtn');
+    const status = document.getElementById('status');
 
-  <!-- RIGHT SIDE (LOGIN + SIGNUP) -->
-  <div class="w-full max-w-md glass rounded-2xl p-8 shadow-2xl">
+    toggleBtn.onclick = () => {
+      loginForm.classList.toggle('hidden');
+      registerForm.classList.toggle('hidden');
+      toggleBtn.textContent = loginForm.classList.contains('hidden') ? 'Have account? Sign in' : "Don't have account? Sign up";
+    };
 
-  <h1 class="text-4xl font-black gradient-text text-center mb-6">CineHall</h1>
+    function showStatus(msg, type = 'error') {
+      status.textContent = msg;
+      status.className = `status ${type}`;
+      status.classList.remove('hidden');
+      setTimeout(() => status.classList.add('hidden'), 4000);
+    }
 
-  <!-- SIGN IN -->
-  <form id="loginForm" class="space-y-4 fade">
-    <h2 class="text-xl text-white font-semibold text-center">Sign In</h2>
+    async function api(endpoint, data) {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      });
+      return await res.json();
+    }
 
-    <input type="email" id="loginEmail" required
-      class="input w-full h-11 px-4 rounded-lg"
-      placeholder="Email" />
+    // Login
+    loginForm.onsubmit = async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      try {
+        const response = await api('/auth/login', {email, password});
+        if (response.success && response.data && response.data.token) {
+          localStorage.setItem('token', response.data.token);
+          showStatus('✅ Login success! Backend authenticated.', 'success');
+          setTimeout(() => location.href = '/code.html', 1500);
+        } else {
+          showStatus(response.error || response.message || 'Login failed', 'error');
+        }
+      } catch (e) {
+        showStatus('Network error', 'error');
+      }
+    };
 
-    <input type="password" id="loginPassword" required
-      class="input w-full h-11 px-4 rounded-lg"
-      placeholder="Password" />
-
-    <button class="w-full h-11 rounded-lg bg-indigo-500 font-bold">
-      Login
-    </button>
-
-    <p class="text-center text-sm text-slate-400">
-      Don't have an account?
-      <span id="showSignup" class="text-indigo-400 cursor-pointer">Sign Up</span>
-    </p>
-  </form>
-
-  <!-- SIGN UP -->
-  <form id="registerForm" class="space-y-4 fade hidden mt-6">
-    <h2 class="text-xl text-white font-semibold text-center">Create Account</h2>
-
-    <input type="email" id="registerEmail" required
-      class="input w-full h-11 px-4 rounded-lg"
-      placeholder="Email" />
-
-    <input type="password" id="registerPassword" required
-      class="input w-full h-11 px-4 rounded-lg"
-      placeholder="Password" />
-
-    <button class="w-full h-11 rounded-lg bg-emerald-500 font-bold">
-      Sign Up
-    </button>
-
-    <p class="text-center text-sm text-slate-400">
-      Already have an account?
-      <span id="showLogin" class="text-indigo-400 cursor-pointer">Sign In</span>
-    </p>
-  </form>
-
-</div>
-
-<script>
-let token = localStorage.getItem("authToken");
-
-const loginForm = document.getElementById("loginForm");
-const registerForm = document.getElementById("registerForm");
-
-// TOGGLE
-document.getElementById("showSignup").onclick = () => {
-  loginForm.classList.add("hidden");
-  registerForm.classList.remove("hidden");
-};
-
-document.getElementById("showLogin").onclick = () => {
-  registerForm.classList.add("hidden");
-  loginForm.classList.remove("hidden");
-};
-
-// API helper
-async function api(url, data){
-  const res = await fetch(url,{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json",
-      ...(token && { Authorization:`Bearer ${token}` })
-    },
-    body:JSON.stringify(data)
-  });
-  return res.json();
-}
-
-// LOGIN
-loginForm.addEventListener("submit", async e=>{
-  e.preventDefault();
-
-  const res = await api("/auth/login", {
-    email: loginEmail.value,
-    password: loginPassword.value
-  });
-
-  if(res.token){
-    localStorage.setItem("authToken", res.token);
-    alert("Login success");
-    location.reload();
-  } else {
-    alert(res.error || "Login failed");
-  }
-});
-
-// REGISTER
-registerForm.addEventListener("submit", async e=>{
-  e.preventDefault();
-
-  const res = await api("/auth/register", {
-    email: registerEmail.value,
-    password: registerPassword.value
-  });
-
-  if(res.token){
-    localStorage.setItem("authToken", res.token);
-    alert("Account created");
-    location.reload();
-  } else {
-    alert(res.error || "Signup failed");
-  }
-});
-</script>
-
+    // Register  
+    registerForm.onsubmit = async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('registerEmail').value;
+      const password = document.getElementById('registerPassword').value;
+      try {
+        const response = await api('/auth/register', {name: email.split('@')[0], email, password});
+        if (response.success && response.data && response.data.token) {
+          localStorage.setItem('token', response.data.token);
+          showStatus('✅ Register success! Backend authenticated.', 'success');
+          setTimeout(() => location.href = '/code.html', 1500);
+        } else {
+          showStatus(response.error || response.message || 'Register failed', 'error');
+        }
+      } catch (e) {
+        showStatus('Network error', 'error');
+      }
+    };
+  </script>
 </body>
 </html>
