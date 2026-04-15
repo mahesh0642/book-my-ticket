@@ -1,141 +1,229 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stellar Seat Booking</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap");
-      body {
-        font-family: "Outfit", sans-serif;
-        background-color: #0f172a;
-        color: #f8fafc;
-      }
-    </style>
-  </head>
-  <body
-    class="min-h-screen flex items-center justify-center p-6 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
-  >
-    <div
-      class="max-w-7xl w-full bg-slate-800/80 backdrop-blur-xl rounded-3xl shadow-2xl p-10 border border-slate-700/50"
-    >
-      <div class="text-center mb-10">
-        <h1
-          class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 mb-4 tracking-tight"
-        >
-          ChaiCode Cinema - Now Showing<br />
-          <br />
-          <span class="text-red-400">
-            <span class="font-bold">Dhurandhar The Revenge</span>
-          </span>
-        </h1>
-        <p class="text-slate-400 text-lg">Jassi ko ghar ki yaad kyu nhi aai?</p>
-      </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineHall | Premium Auth</title>
 
-      <div class="flex justify-center mb-10">
-        <div
-          class="bg-slate-900/50 rounded-full px-6 py-3 border border-slate-700 flex gap-8 items-center"
-        >
-          <div class="flex items-center gap-3">
-            <div
-              class="w-4 h-4 rounded-full bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.6)]"
-            ></div>
-            <span class="text-slate-300 font-medium tracking-wide"
-              >Available</span
-            >
-          </div>
-          <div class="w-px h-6 bg-slate-700"></div>
-          <div class="flex items-center gap-3">
-            <div
-              class="w-4 h-4 rounded-full bg-rose-500/20 border border-rose-500/50"
-            ></div>
-            <span class="text-slate-400 font-medium tracking-wide">Booked</span>
-          </div>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+
+    body {
+      background: linear-gradient(145deg, #0a0e1a, #1a1f2e, #16213e);
+    }
+
+    .premium-glass {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(25px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .premium-glow {
+      box-shadow: 0 0 40px rgba(99,102,241,0.4);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg,#6366f1,#8b5cf6,#ec4899);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .form-input {
+      background: rgba(255,255,255,0.08);
+      border: none;
+      outline: none;
+      color: white;
+    }
+
+    .form-input::placeholder {
+      color: #aaa;
+    }
+
+    .form-input:focus {
+      box-shadow: 0 0 0 2px rgba(99,102,241,0.5);
+    }
+
+    .card-hover {
+      transition: 0.3s;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-6px);
+    }
+
+    .notif {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 16px 20px;
+      border-radius: 12px;
+      color: white;
+      font-weight: 600;
+      z-index: 999;
+      animation: slide 0.4s ease;
+    }
+
+    .success { background: #10b981; }
+    .error { background: #ef4444; }
+
+    @keyframes slide {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center p-6">
+
+<div class="w-full max-w-6xl flex flex-col lg:flex-row gap-12 items-center">
+
+  <!-- LEFT SIDE -->
+  <div class="lg:w-1/2 text-center lg:text-left flex-end">
+    <h1 class="text-6xl font-black gradient-text mb-6">CineHall</h1>
+    <h2 class="text-3xl font-bold text-white mb-4">BookMyShow Premium</h2>
+    <p class="text-slate-300 text-lg mb-10">
+      Experience seamless movie booking with premium seat selection and secure authentication.
+    </p>
+
+    <div class="space-y-4 hidden lg:block">
+      <div class="premium-glass p-4 rounded-xl flex gap-4 items-center">
+        <div class="text-green-400 text-xl">✔</div>
+        <div>
+          <div class="text-white font-semibold">Premium Seats</div>
+          <div class="text-sm text-slate-400">Best viewing experience</div>
         </div>
       </div>
 
-      <div class="flex justify-center">
-        <div
-          class="bg-slate-900/40 p-8 rounded-2xl border border-slate-700/50 shadow-inner"
-        >
-          <table
-            id="tbl"
-            class="border-separate border-spacing-4 mx-auto"
-          ></table>
+      <div class="premium-glass p-4 rounded-xl flex gap-4 items-center">
+        <div class="text-indigo-400 text-xl">🔒</div>
+        <div>
+          <div class="text-white font-semibold">Secure Login</div>
+          <div class="text-sm text-slate-400">JWT protected</div>
         </div>
       </div>
     </div>
+  </div>
 
-    <script>
-      async function run() {
-        const tbl = document.getElementById("tbl");
-        const res = await fetch("/seats");
-        const resarray = await res.json();
-        const j = resarray.sort((a, b) => a.id - b.id);
-        let tr;
-        for (let i = 0; i < j.length; i++) {
-          if (i % 8 === 0) tr = document.createElement("tr");
+  <!-- RIGHT SIDE (LOGIN + SIGNUP) -->
+  <div class="w-full max-w-md glass rounded-2xl p-8 shadow-2xl">
 
-          const td = document.createElement("td");
+  <h1 class="text-4xl font-black gradient-text text-center mb-6">CineHall</h1>
 
-          // Base aesthetic classes - added 'relative group' for tooltip positioning
-          const baseClasses =
-            "w-32 h-32 rounded-2xl text-center align-middle text-2xl font-bold transition-all duration-300 select-none relative group";
+  <!-- SIGN IN -->
+  <form id="loginForm" class="space-y-4 fade">
+    <h2 class="text-xl text-white font-semibold text-center">Sign In</h2>
 
-          if (j[i].isbooked) {
-            td.className = `${baseClasses} bg-rose-500/10 text-rose-500/60 border border-rose-500/20 cursor-not-allowed`;
-            td.innerHTML = `
-                    <span class="relative z-10">${j[i].id}</span>
-                    <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-4 py-2 bg-slate-900 border border-slate-700 text-sm text-slate-300 rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap shadow-2xl z-50 pointer-events-none font-normal shadow-[0_10px_25px_rgba(0,0,0,0.5)]">
-                        Booked by: <span class="font-bold text-white ml-1">${j[i].name}</span>
-                        <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-[1px] border-[6px] border-transparent border-t-slate-700"></div>
-                        <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-[2px] border-[5px] border-transparent border-t-slate-900"></div>
-                    </div>
-                `;
-          } else {
-            td.className = `${baseClasses} bg-emerald-500 text-white border-2 border-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.3)] cursor-pointer hover:bg-emerald-400 hover:-translate-y-1.5 hover:shadow-[0_10px_25px_rgba(16,185,129,0.5)] active:scale-95 active:shadow-[0_0_10px_rgba(16,185,129,0.3)]`;
-            td.innerHTML = `<span class="relative z-10">${j[i].id}</span>`;
-          }
+    <input type="email" id="loginEmail" required
+      class="input w-full h-11 px-4 rounded-lg"
+      placeholder="Email" />
 
-          td.addEventListener("click", async function (e) {
-            const currentTd = e.currentTarget;
-            if (currentTd.classList.contains("cursor-not-allowed")) {
-              return; // Seat is already taken
-            }
+    <input type="password" id="loginPassword" required
+      class="input w-full h-11 px-4 rounded-lg"
+      placeholder="Password" />
 
-            try {
-              const id = j[i].id; // Safe from loop closure
-              const name = prompt("Enter your name");
-              if (!name) return;
+    <button class="w-full h-11 rounded-lg bg-indigo-500 font-bold">
+      Login
+    </button>
 
-              const res = await fetch(`/${id}/${name}`, { method: "PUT" });
-              const data = await res.json();
+    <p class="text-center text-sm text-slate-400">
+      Don't have an account?
+      <span id="showSignup" class="text-indigo-400 cursor-pointer">Sign Up</span>
+    </p>
+  </form>
 
-              if (data.error) {
-                alert("FAILED! Couldn't book! already booked.");
-              } else {
-                alert("Booked successfully!");
-                // Visually transition to booked state upon success
-                currentTd.className = `${baseClasses} bg-rose-500/10 text-rose-500/60 border border-rose-500/20 cursor-not-allowed`;
-                currentTd.innerHTML = `
-                            <span class="relative z-10">${id}</span>
-                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-4 py-2 bg-slate-900 border border-slate-700 text-sm text-slate-300 rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap shadow-2xl z-50 pointer-events-none font-normal shadow-[0_10px_25px_rgba(0,0,0,0.5)]">
-                                Booked by: <span class="font-bold text-white ml-1">${name}</span>
-                                <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-[1px] border-[6px] border-transparent border-t-slate-700"></div>
-                                <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-[2px] border-[5px] border-transparent border-t-slate-900"></div>
-                            </div>
-                        `;
-              }
-            } catch (ex) {
-              alert("error booking " + ex);
-            }
-          });
-          tr.appendChild(td);
-          tbl.appendChild(tr);
-        }
-      }
-      run();
-    </script>
-  </body>
+  <!-- SIGN UP -->
+  <form id="registerForm" class="space-y-4 fade hidden mt-6">
+    <h2 class="text-xl text-white font-semibold text-center">Create Account</h2>
+
+    <input type="email" id="registerEmail" required
+      class="input w-full h-11 px-4 rounded-lg"
+      placeholder="Email" />
+
+    <input type="password" id="registerPassword" required
+      class="input w-full h-11 px-4 rounded-lg"
+      placeholder="Password" />
+
+    <button class="w-full h-11 rounded-lg bg-emerald-500 font-bold">
+      Sign Up
+    </button>
+
+    <p class="text-center text-sm text-slate-400">
+      Already have an account?
+      <span id="showLogin" class="text-indigo-400 cursor-pointer">Sign In</span>
+    </p>
+  </form>
+
+</div>
+
+<script>
+let token = localStorage.getItem("authToken");
+
+const loginForm = document.getElementById("loginForm");
+const registerForm = document.getElementById("registerForm");
+
+// TOGGLE
+document.getElementById("showSignup").onclick = () => {
+  loginForm.classList.add("hidden");
+  registerForm.classList.remove("hidden");
+};
+
+document.getElementById("showLogin").onclick = () => {
+  registerForm.classList.add("hidden");
+  loginForm.classList.remove("hidden");
+};
+
+// API helper
+async function api(url, data){
+  const res = await fetch(url,{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json",
+      ...(token && { Authorization:`Bearer ${token}` })
+    },
+    body:JSON.stringify(data)
+  });
+  return res.json();
+}
+
+// LOGIN
+loginForm.addEventListener("submit", async e=>{
+  e.preventDefault();
+
+  const res = await api("/auth/login", {
+    email: loginEmail.value,
+    password: loginPassword.value
+  });
+
+  if(res.token){
+    localStorage.setItem("authToken", res.token);
+    alert("Login success");
+    location.reload();
+  } else {
+    alert(res.error || "Login failed");
+  }
+});
+
+// REGISTER
+registerForm.addEventListener("submit", async e=>{
+  e.preventDefault();
+
+  const res = await api("/auth/register", {
+    email: registerEmail.value,
+    password: registerPassword.value
+  });
+
+  if(res.token){
+    localStorage.setItem("authToken", res.token);
+    alert("Account created");
+    location.reload();
+  } else {
+    alert(res.error || "Signup failed");
+  }
+});
+</script>
+
+</body>
 </html>

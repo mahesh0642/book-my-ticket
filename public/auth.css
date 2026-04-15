@@ -1,0 +1,30 @@
+/* Fixed visible textfields & professional styling */
+.form-input {
+  @apply w-full px-4 py-3 bg-slate-800 border border-slate-700/50 rounded-lg text-white placeholder-slate-500 text-base font-normal focus:outline-none focus:ring-2 focus:ring-blue-400/60 focus:border-blue-400/70 transition-all duration-300 hover:border-blue-400/50 shadow-sm !important;
+}
+
+.btn-primary {
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all duration-300 w-full text-base !important;
+}
+
+.error-msg {
+  @apply bg-red-900/50 border border-red-600/50 text-red-300 text-sm py-3 px-4 rounded-lg font-medium;
+}
+
+.success-msg {
+  @apply bg-green-900/50 border border-green-600/50 text-green-300 text-sm py-3 px-4 rounded-lg font-medium;
+}
+
+/* Ensure visibility */
+.glass-card input, .glass-card button {
+  color: white !important;
+  background-color: rgba(31, 41, 55, 0.9) !important;
+}
+
+.glass-card input::placeholder {
+  color: rgb(148, 163, 184) !important;
+}
+
+.glass-card label {
+  color: rgb(226, 232, 240) !important;
+}

@@ -25,7 +25,7 @@ const pool = new pg.Pool({
   port: 5433,
   user: "postgres",
   password: "postgres",
-  database: "sql_class_2_db",
+  database: "postgress-seats",
   max: 20,
   connectionTimeoutMillis: 0,
   idleTimeoutMillis: 0,
