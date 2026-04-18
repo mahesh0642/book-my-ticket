@@ -1,12 +1,13 @@
-# Authentication Fix - Minimal Steps
-- [x] 1. Start Postgres DB
-- [x] 2. Fixed services.js → function exports (your original style)
-- [x] 3. Controller params order fixed
-- [ ] 4. Test npm run dev
+# Task: Fix seats visibility, DB connection, Production readiness
 
-- [ ] 2. Edit register DTO (add optional name)
-- [ ] 3. Edit auth services (default name if missing)
-- [ ] 4. Edit auth controller (handle name safely)
-- [ ] 5. Update index.html (add name input + JS)
-- [ ] 6. Test register/login → token received
-- [ ] 7. Add token-gated seats/booking redirect
+## Status: [IN PROGRESS]
+
+### Step 1: [REVERTED - No DB changes]
+### Step 2: Install prod deps (helmet, compression) - 🔄 INSTALLING
+### Step 3: Fix index.mjs (remove duplicate pool/endpoint) - TODO
+### Step 4: Add healthcheck endpoint - TODO
+### Step 5: Update package.json (devDeps, scripts) - TODO
+### Step 6: Test DB connection & populate seats - TODO
+### Step 7: Production middleware - TODO
+### Step 8: Full test: auth → seats UI - TODO
+### Step 9: Deploy ready - TODO
